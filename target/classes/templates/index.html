@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!aqui agregamos thymeleaf a nuestro proyecto>
+<html xmlns:th = "http://www.thymeleaf.org">    
+        <head>                      
+            <title>Inicio</title>        
+            <meta charset="UTF-8">
+        </head>
+        <body>            
+            <h1>inicio</h1>            
+            <a th:href="@{/agregar}">Crear persona</a>
+         <div th:if= "${personas != null and !personas.empty}">
+            <table border="1">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Telefono</th>
+                    <th>Email</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+
+           <tr th:each = "persona : ${personas}"> <!-- ciclo for para mostrar cada uno de los datos de la variable -->
+               <td th:text="${persona.nombre}"> Mostrar Nombre</td>
+                <td th:text="${persona.apellido}">Mostrar Apellido</td>
+                <td th:text="${persona.telefono}">Mostrar Telefono</td>
+                <td th:text="${persona.email}">Mostrar Email</td> 
+                
+               <!-- <td><a th:href="@{/editar/} + ${persona.idPersona}" th:text="Editar"/> </td> <!-- redirigimos al path de editar, adicional enviamos el id de la persona que se quiere eliminar en el path -->
+                <td><a th:href="@{/editar(idPersona=${persona.idPersona})}" th:text="Editar"/> </td> <!-- redirigimos al path de editar, adicional enviamos el id de la persona que se quiere eliminar en el path pero lo enviamos por la forma de query parameter-->
+               
+                <!--   <td> <a th:href= "@{/eliminar/} + ${persona.idPersona}" th:text="Eliminar"/> </td> <!-- aqui podemos eliminar a la persona que tenemos sellecionada  -->
+                <td> <a th:href= "@{/eliminar(idPersona=${persona.idPersona})}"  th:text="Eliminar"/> </td> <!-- aqui podemos eliminar a la persona que tenemos sellecionada como un queryParametro pasandole el parametro e el path -->
+
+            </tr>
+
+
+        </table>
+                </div>   
+        <div th:if= "${personas == null or personas.empty}">
+                     las lista de personas esta vacia
+        </div>  
+        <!-- ingresamos a los datos de la clase que tenemos mapeada en el controladorInicio -->
+        <!-- Nombre:<span th:text="${persona.nombre}"> Mostrar Nombre</span>
+        <br/>
+        Apellido:<span th:text="${persona.apellido}">Mostrar Apellido</span>
+        <br/>
+        Telefono:<span th:text="${persona.telefono}">Mostrar Telefono</span>
+        <br/>
+        Email:<span th:text="${persona.email}">Mostrar Email</span>
+        -->
+    </body>
+
+
+
+</html>

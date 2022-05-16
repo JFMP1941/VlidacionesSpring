@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!aqui agregamos thymeleaf a nuestro proyecto>
+<html xmlns:th = "http://www.thymeleaf.org" xmls="http://www.w3.org/1999/xhtml">   
+    <head>
+        <title>Datos de la persona</title>
+        <meta charset="UTF-8"/>
+    </head>
+    <body>
+        <h1>Datos de la persona</h1>
+        <a th:href ="@{/}">regresar</a>
+        <br/>
+        <form th:action ="@{/guardar}" method="post" th:object="${persona}">
+            <input type="hidden"  name="idPersona" th:field="*{idPersona}"><!-- ponemos un input con el id de la persona (hidden para ponerlo oculto), 
+            si existe la persona trae el id de esta, si no existe trae null y cuando se realiza la actualizacion crea la persona-->
+            <br/>
+            <label for="nombre">Nombre: </label>
+            <input type="text" name="nombre" th:field="*{nombre}"/>
+            <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">no</span>
+            <br/>
+            <br/>
+            <label for="apellido">apellido</label>
+            <input type="text" name="apellido" th:field="*{apellido}"/>
+            <span th:if="${#fields.hasErrors('apellido')}" th:errors="*{apellido}">no</span>
+            <br/>
+            <br/>
+            <label for="telefono">telefono</label>           
+            <input type="text" name="telefono" th:field="*{telefono}"/>
+            <br/>
+            <br/>
+            <label for="email">email</label>
+            <input type="text" name="email" th:field="*{email}"/>
+            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">no debe estar vacio</span>
+            <br/>
+            <br/>
+            <input type="submit" name="guardar" value="Guardar"/>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,7 @@
+com\felipe\prueba\HolaSpring\domain\Persona.class
+com\felipe\prueba\HolaSpring\DAO\PersonaDAO.class
+com\felipe\prueba\HolaSpring\HolaSpringApplication.class
+com\felipe\prueba\HolaSpring\Web\ControladorInicio.class
+com\felipe\prueba\HolaSpring\Servicio\PersonaServiceImpl.class
+.netbeans_automatic_build
+com\felipe\prueba\HolaSpring\Servicio\PersonaService.class
